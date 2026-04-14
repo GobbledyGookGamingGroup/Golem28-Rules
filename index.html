@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golem28 | The Primer</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #fbe6d4;
+            --accent-purple: #a800b0;
+            --accent-yellow: #feca00;
+            --accent-orange: #f26522;
+            --accent-red: #b30000;
+        }
+
+        .zine-title {
+            color: var(--bg-color);
+            -webkit-text-stroke: 2px var(--text-main);
+            text-shadow: 4px 4px 0px var(--accent-orange);
+        }
+        
+        .zine-header {
+            color: var(--accent-yellow);
+            border-bottom: 4px solid var(--accent-purple);
+            display: inline-block;
+            padding-bottom: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .zine-subheader {
+            color: var(--accent-orange);
+            border-bottom: 2px dashed var(--text-main);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .zine-title {
+                text-shadow: 2px 2px 0px var(--accent-orange);
+            }
+        }
+
+        /* Custom Scrollbar for a gritty feel */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+            border-left: 2px solid var(--text-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-red);
+            border: 2px solid var(--text-main);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-yellow);
+        }
+        
+        p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        golem: {
+                            bg: 'var(--bg-color)',
+                            text: 'var(--text-main)',
+                            purple: 'var(--accent-purple)',
+                            yellow: 'var(--accent-yellow)',
+                            orange: 'var(--accent-orange)',
+                            red: 'var(--accent-red)',
+                            dark: '#111111'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        mono: ['"Space Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-golem-bg text-golem-text font-mono selection:bg-golem-purple/50">
+
+    <!-- Header -->
+    <header class="text-center py-16 border-b-4 border-golem-text relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, var(--accent-red) 0, var(--accent-red) 2px, transparent 2px, transparent 8px);"></div>
+        <div class="relative z-10">
+            <h1 class="zine-title text-5xl sm:text-7xl font-serif font-bold tracking-widest uppercase mb-4">Golem28</h1>
+            <div class="text-2xl text-golem-yellow font-bold tracking-widest uppercase mb-6 bg-golem-dark inline-block px-6 py-2 border-2 border-golem-yellow shadow-[4px_4px_0_var(--accent-purple)]">The Primer</div>
+            <div class="max-w-2xl mx-auto mt-6 border-l-4 border-golem-orange pl-6 text-left italic text-golem-text/80">
+                <p class="mb-2 font-bold text-golem-orange">"From ash to ash and dust to dust.</p>
+                <p class="mb-2">A god of things sits and rusts.</p>
+                <p class="mb-2">A crown for a king, a hole for the soul,</p>
+                <p class="mb-0">To wake the golem and make it whole."</p>
+                <p class="text-sm mt-4 text-golem-text/50">- A Prayer to the God of Things as they Ought to be.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row gap-12">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="md:w-1/4 shrink-0">
+            <div class="sticky top-8 border-4 border-golem-text bg-golem-dark p-6 shadow-[8px_8px_0_var(--accent-red)]">
+                <h2 class="font-serif font-bold text-xl text-golem-red uppercase tracking-widest border-b-2 border-golem-red pb-2 mb-4">Contents</h2>
+                <nav class="flex flex-col gap-3 text-sm font-bold tracking-wider">
+                    <a href="#intro" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">0. Introduction</a>
+                    <a href="#simulacrum" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">1. Simulacrum</a>
+                    <a href="#animator" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">2. The Animator</a>
+                    <a href="#golems" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">3. Golems</a>
+                    <a href="#followers" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">4. The Followers</a>
+                    <a href="#mechanics" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">5. Mechanics</a>
+                    <a href="#playing" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">6. Playing the Game</a>
+                    <a href="#bouts" class="text-golem-text hover:text-golem-yellow hover:translate-x-2 transition-transform">7. Bouts</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="md:w-3/4 bg-golem-dark border-2 border-golem-text p-6 sm:p-10 shadow-[12px_12px_0_var(--accent-purple)] text-lg">
+            
+            <section id="intro" class="mb-16">
+                <h2 class="text-3xl font-serif font-bold zine-header">Game Primer</h2>
+                <p>Golem28 is a tactical skirmish kitbasher wargame where players must carefully plan their actions, bet on successful outcomes, and destroy their enemies.</p>
+                <p>In this game, you do not just command an army; you build a "simulacrum" led by an Animator, supported by the terrifying golems they have brought to life, and accompanied by other followers. The game takes place in a dark fantasy world full of woes, tragedies, and misfortune. Ravaging the world are simulacra, which are groups of golems and followers led by animators. The animator is the true mastermind and the only unit capable of issuing commands to their golems, hulking monstrosities that possess no actions of their own.</p>
+                <p>At its core, Golem28 celebrates the hobbyist. Golems can be crafted and kitbashed from anything, old DnD minis, thrift store figurines, or literal trash. Animators and followers can be any 28mm minis you have from adjacent fantasy games.</p>
+                <p class="font-bold text-golem-yellow uppercase tracking-widest mt-6">So gather your simulacrum and go forth on your dark quest.</p>
+            </section>
+
+            <div class="text-golem-text/30 font-bold tracking-[1em] text-center my-12">/// /// ///</div>
+
+            <section id="simulacrum" class="mb-16">
+                <h2 class="text-4xl font-serif font-bold zine-header">1. Simulacrum</h2>
+                <p>Your simulacrum is comprised of animators, golems, and followers. Your animator has created their golems to perform their bidding. And followers blindly follow their leader and simulacrum into battles.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">1.1 Composition</h3>
+                <p>Your first simulacrum consists of one of the two configurations: 1 animator, 1 golem, and 3 followers OR 1 animator, 2 golems, and 1 follower.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">1.2 The Animator's Role</h3>
+                <p>The leader of the simulacrum, animators vary wildly, from dark magii to chivalrous knights to manic madmen. As the mastermind of your warband, they are the only units that can command, as golems cannot act on their own.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">1.3 The Nature of Golems</h3>
+                <p>Golems are hulking monstrosities that have been animated to life. They are the constructs of the animators, brought into this world via insidious means. Think statues, constructs, or welded machinations. Because they lack their own will, they act at the direct command of their animator.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">1.4 The Followers</h3>
+                <p>Followers are the other individuals who accompany the animator. Mercenaries, questing soldiers, enslaved peasants, their backgrounds can vary greatly. While followers are much more frail than golems, they serve the simulacrum by marching forward, taking objectives, sneaking past enemies, or simply distracting the enemy.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">1.5 The Story</h3>
+                <p>Each simulacrum's story for venturing and conquest varies differently. When you create your simulacrum, you must give them a name and a reason as to why they are together.</p>
+            </section>
+
+            <div class="text-golem-text/30 font-bold tracking-[1em] text-center my-12">/// /// ///</div>
+
+            <section id="animator" class="mb-16">
+                <h2 class="text-4xl font-serif font-bold zine-header">2. The Animator</h2>
+                <p>The leader of the simulacrum. They are the only units that can command golems as the constructs cannot act on their own. They also have individual actions such as movement, physical attacks, and interact.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">2.1 Models and Base Sizes</h3>
+                <p>The animator can be made from any fantasy era 28mm scale miniature. The grimmier, the better. They can be placed on 25-40mm bases.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">2.2 Attributes</h3>
+                <p>You build your animator by selecting values from 7 attributes. You have 15 worth to spend on attributes.</p>
+                <ul class="list-disc pl-6 mb-6 space-y-2 text-sm sm:text-base">
+                    <li><strong class="text-golem-yellow">Command Range:</strong> How far an animator can command a golem.</li>
+                    <li><strong class="text-golem-yellow">Durability:</strong> The amount of damage an animator can take before going out of action (HP).</li>
+                    <li><strong class="text-golem-yellow">Nimbleness:</strong> How agile and quick the animator is (Speed).</li>
+                    <li><strong class="text-golem-yellow">Clout:</strong> How strong and physically destructive the animator is (Strength).</li>
+                    <li><strong class="text-golem-yellow">Physical Attack Range (PAR):</strong> How far the animator can make a physical attack. Base to Base (BtB) represents melee.</li>
+                    <li><strong class="text-golem-yellow">Ward:</strong> How physically tough and hardy the animator is (Defense).</li>
+                    <li><strong class="text-golem-yellow">Mind:</strong> How mentally adept the animator is and how well they can defend against magical attacks.</li>
+                </ul>
+
+                <!-- Animator Attribute Table -->
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full border-4 border-golem-purple bg-golem-bg text-sm sm:text-base">
+                        <thead class="bg-golem-purple text-golem-bg font-bold uppercase tracking-widest">
+                            <tr>
+                                <th class="p-3 border-2 border-golem-purple text-left">Attribute</th>
+                                <th class="p-3 border-2 border-golem-purple text-left">Value/Range</th>
+                                <th class="p-3 border-2 border-golem-purple text-center">Worth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Command Range -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-yellow" rowspan="3">Command Range</td><td class="p-3 border-2 border-golem-text/30">2d6"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">2+1d6"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <!-- Durability -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-yellow" rowspan="3">Durability</td><td class="p-3 border-2 border-golem-text/30">1</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">2</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">4</td></tr>
+                            <!-- Nimbleness -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-yellow" rowspan="3">Nimbleness</td><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">6</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">4</td></tr>
+                            <!-- Clout -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-yellow" rowspan="3">Clout</td><td class="p-3 border-2 border-golem-text/30">1</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">2</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">3</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">5</td></tr>
+                            <!-- Physical Attack Range -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-yellow" rowspan="4">Physical Attack Range</td><td class="p-3 border-2 border-golem-text/30">BtB</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">0</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">3"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">1+1d6"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">2d6"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">3</td></tr>
+                            <!-- Ward -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-yellow" rowspan="4">Ward</td><td class="p-3 border-2 border-golem-text/30">1</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">2</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">4</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">6</td></tr>
+                            <!-- Mind -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-yellow" rowspan="3">Mind</td><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">6</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-orange">3</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">2.3 Actions</h3>
+                <p>Animators typically receive 6 action points, and every action costs one point with the exception of command chains. These core actions are inherent and available to all animators.</p>
+                <ul class="list-disc pl-6 mb-6 space-y-2">
+                    <li><strong class="text-golem-yellow">Move:</strong> In a straight line, move up to Nimbleness in inches.</li>
+                    <li><strong class="text-golem-yellow">Attack:</strong> Make a physical attack at range against a declared target.</li>
+                    <li><strong class="text-golem-yellow">Interact:</strong> Interact with a BtB object or item.</li>
+                    <li><strong class="text-golem-yellow">Reanimate:</strong> Reanimate a downed golem within command range (Unopposed Mind roll). Recovers 1d3 durability. Once per bout per animator.</li>
+                    <li><strong class="text-golem-yellow">Command:</strong> Command a golem within command range. Action points wasted if the golem is outside of range.</li>
+                    <li><strong class="text-golem-yellow">Command Chains:</strong> A golem can receive multiple commands in a sequence. You must declare the sequence beforehand. Limited to one standard command per turn, no duplicates within a chain.</li>
+                </ul>
+            </section>
+
+            <div class="text-golem-text/30 font-bold tracking-[1em] text-center my-12">/// /// ///</div>
+
+            <section id="golems" class="mb-16">
+                <h2 class="text-4xl font-serif font-bold zine-header">3. Golems</h2>
+                <p>Unlike animators, golems do not have actions. They instead have commands which must be purchased like attributes. Golems have 21 Worth to purchase attributes and commands.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">3.1 Models and Base Sizes</h3>
+                <p>Golems are kit-bashed abominations placed on 40mm-120mm bases. Height gives no inherent bonuses, but base size matters for movement.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">3.2 Golem Attributes</h3>
+                <p>Purchased with Worth similarly to animators, tailored for monstrous constructs.</p>
+
+                <!-- Golem Attribute Table -->
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full border-4 border-golem-yellow bg-golem-bg text-sm sm:text-base">
+                        <thead class="bg-golem-yellow text-golem-bg font-bold uppercase tracking-widest">
+                            <tr>
+                                <th class="p-3 border-2 border-golem-yellow text-left">Attribute</th>
+                                <th class="p-3 border-2 border-golem-yellow text-left">Value/Range</th>
+                                <th class="p-3 border-2 border-golem-yellow text-center">Worth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Durability -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-orange" rowspan="4">Durability</td><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">4</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">6</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">7</td></tr>
+                            <!-- Nimbleness -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-orange" rowspan="4">Nimbleness</td><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">4</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">6</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">7</td></tr>
+                            <!-- Clout -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-orange" rowspan="4">Clout</td><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">4</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">6</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">7</td></tr>
+                            <!-- Physical Attack Range -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-orange" rowspan="4">Physical Attack Range</td><td class="p-3 border-2 border-golem-text/30">BtB</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">3"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">1+1d6"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">4</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">2d6"</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">7</td></tr>
+                            <!-- Ward -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-orange" rowspan="4">Ward</td><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">4</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">6</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">7</td></tr>
+                            <!-- Mind -->
+                            <tr><td class="p-3 border-2 border-golem-text/30 font-bold text-golem-orange" rowspan="4">Mind</td><td class="p-3 border-2 border-golem-text/30">3</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">1</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">4</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">2</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">5</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">4</td></tr>
+                            <tr><td class="p-3 border-2 border-golem-text/30">6</td><td class="p-3 border-2 border-golem-text/30 text-center font-bold text-golem-purple">7</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">3.4 Commands</h3>
+                <p>Animators issue commands to Golems. Commands must be purchased. There are three free commands: Bash, Dash, and Stash.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div class="border-2 border-golem-text p-4 bg-[#0a0a0a]">
+                        <h4 class="font-bold text-golem-red uppercase mb-2 border-b border-golem-text pb-1">Movement</h4>
+                        <ul class="text-sm space-y-2">
+                            <li><strong class="text-golem-yellow">Dash (0W):</strong> Move up to nimbleness in inches.</li>
+                            <li><strong class="text-golem-yellow">Lash (1W):</strong> Roll 1d6 minus 3. Move that distance. If negative, pushed backward.</li>
+                        </ul>
+                    </div>
+                    <div class="border-2 border-golem-text p-4 bg-[#0a0a0a]">
+                        <h4 class="font-bold text-golem-red uppercase mb-2 border-b border-golem-text pb-1">Violence</h4>
+                        <ul class="text-sm space-y-2">
+                            <li><strong class="text-golem-yellow">Bash (0W):</strong> Physical attack at range.</li>
+                            <li><strong class="text-golem-yellow">Crash (2W):</strong> Move 1d3" to target, physical attack +1D.</li>
+                            <li><strong class="text-golem-yellow">Slash (2W):</strong> Two physical attacks, -1D each.</li>
+                            <li><strong class="text-golem-yellow">Gnash (2W):</strong> Target within range makes unopposed ward save. Fail = enwrapped.</li>
+                            <li><strong class="text-golem-yellow">Gash (2W):</strong> Physical attack with -1D. On hit, target gouged.</li>
+                            <li><strong class="text-golem-yellow">Smash (1W):</strong> Physical attack +1D clout. Hit pushes target 1d3".</li>
+                            <li><strong class="text-golem-yellow">Thrash (2W):</strong> Physical attack all BtB units +1D clout.</li>
+                            <li><strong class="text-golem-yellow">Trash (1W):</strong> Physical attack BtB target -1D Clout. +1d3 dmg to terrain if hit.</li>
+                        </ul>
+                    </div>
+                    <div class="border-2 border-golem-text p-4 bg-[#0a0a0a]">
+                        <h4 class="font-bold text-golem-red uppercase mb-2 border-b border-golem-text pb-1">Productive</h4>
+                        <ul class="text-sm space-y-2">
+                            <li><strong class="text-golem-yellow">Stash (0W):</strong> Pick up item/objective/downed golem.</li>
+                            <li><strong class="text-golem-yellow">Hash (1W):</strong> Unopposed Ward DC:12+ to recover 1 impairment.</li>
+                            <li><strong class="text-golem-yellow">Mishmash (1W):</strong> Unopposed Nimbleness to steal 1 item from BtB golem.</li>
+                        </ul>
+                    </div>
+                    <div class="border-2 border-golem-text p-4 bg-[#0a0a0a]">
+                        <h4 class="font-bold text-golem-red uppercase mb-2 border-b border-golem-text pb-1">Magicka</h4>
+                        <ul class="text-sm space-y-2">
+                            <li><strong class="text-golem-yellow">Ash (2W):</strong> Mind roll +1D. If 10+, magically attack target within (R-9)" with 1D to mind.</li>
+                            <li><strong class="text-golem-yellow">Flash (2W):</strong> Mind roll. If 13+, magically attack target within (R-12)".</li>
+                            <li><strong class="text-golem-yellow">Rash (2W):</strong> Unopposed mind DC:12+. Target within (R-11)" is rotting.</li>
+                            <li><strong class="text-golem-yellow">Sash (2W):</strong> Unopposed mind DC:10+. Target within (R-10)" gets +1D to next roll.</li>
+                            <li><strong class="text-golem-yellow">Splash (2W):</strong> Unopposed mind DC:10+. Place 5" template within (R-9)". Units inside get -1D.</li>
+                            <li><strong class="text-golem-yellow">Whiplash (2W):</strong> Unopposed mind DC:12+. Push target 1d3" if within (R-11)".</li>
+                            <li><strong class="text-golem-yellow">Zash (1W):</strong> Unopposed mind DC:10+. Transfer 1d3 durability to target in LoS.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="text-golem-text/30 font-bold tracking-[1em] text-center my-12">/// /// ///</div>
+
+            <section id="followers" class="mb-16">
+                <h2 class="text-4xl font-serif font-bold zine-header">4. The Followers</h2>
+                <p>The followers are the grunts or fodder that follow the animator. While nowhere near as powerful as golems, followers are the doers and fodder of the simulacrum.</p>
+                <p>Follower attributes are exactly like animators except they cannot command golems. They have fewer action points per turn and each action costs one point.</p>
+                <ul class="list-disc pl-6 space-y-2 mb-6">
+                    <li><strong class="text-golem-yellow">Move:</strong> In a straight line, move up to Nimbleness in inches.</li>
+                    <li><strong class="text-golem-yellow">Attack:</strong> Make a physical attack at range.</li>
+                    <li><strong class="text-golem-yellow">Interact:</strong> Interact with a BtB object or item.</li>
+                </ul>
+            </section>
+
+            <div class="text-golem-text/30 font-bold tracking-[1em] text-center my-12">/// /// ///</div>
+
+            <section id="mechanics" class="mb-16">
+                <h2 class="text-4xl font-serif font-bold zine-header">5. Mechanics</h2>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">5.1 Dice Rolls</h3>
+                <p>Rolls in Golem28 are made via a <strong class="text-golem-orange">top-3 approach</strong>. Roll a specified number of dice (the pool) and sum the highest three dice. <strong class="text-golem-red">+1D</strong> means add one dice to the pool.</p>
+                <p class="text-sm border-l-4 border-golem-purple pl-4 italic">E.G. A golem has 4 clout and is making an attack with +1D. It rolls 5 dice and takes the sum of the top 3.</p>
+
+                <h4 class="text-xl font-bold mt-4 text-golem-yellow">5.1.1 Opposed Rolls</h4>
+                <p>Both players roll their pool at the same time and compare results. Look up the difference to determine the outcome. If the pool has only 1 or 2 dice, just sum what you have.</p>
+                
+                <h4 class="text-xl font-bold mt-4 text-golem-yellow">5.1.2 Unopposed Rolls</h4>
+                <p>Success is determined if the roll result is equal to or greater than the specified Difficulty Class (DC).</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">5.2 Movement</h3>
+                <p>Move in a straight line, edge of base to edge of base. Animators and followers can climb up to their nimbleness minus horizontal movement made. Golems cannot climb.</p>
+                
+                <table class="w-full max-w-md my-6 border-4 border-golem-red bg-golem-bg text-sm sm:text-base">
+                    <caption class="text-left font-bold text-golem-red mb-2 uppercase tracking-widest">Fall Damage Table</caption>
+                    <thead class="bg-golem-red text-golem-bg font-bold uppercase tracking-widest">
+                        <tr><th class="p-2 border-2 border-golem-red">Distance</th><th class="p-2 border-2 border-golem-red">Damage</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="p-2 border-2 border-golem-text/30">3" or Below</td><td class="p-2 border-2 border-golem-text/30 font-bold">0 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30">3" to 6"</td><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-orange">1d3 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30">&gt; 6"</td><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-red">1d6 Damage</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">5.3 Physical Attacks</h3>
+                <p>Opposed rolls: Attacker's Clout versus Target's Ward. Subtract Ward from Clout and consult the table.</p>
+                
+                <table class="w-full my-6 border-4 border-golem-orange bg-golem-bg text-sm sm:text-base">
+                    <caption class="text-left font-bold text-golem-orange mb-2 uppercase tracking-widest">Physical Attack Table</caption>
+                    <thead class="bg-golem-orange text-golem-bg font-bold uppercase tracking-widest">
+                        <tr><th class="p-2 border-2 border-golem-orange">Difference</th><th class="p-2 border-2 border-golem-orange">Result</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">-5 or Below</td><td class="p-2 border-2 border-golem-text/30">Target may make an immediate physical attack back (if able)</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">-4 to 0</td><td class="p-2 border-2 border-golem-text/30">Miss</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-yellow">1 to 3</td><td class="p-2 border-2 border-golem-text/30">Target takes 1 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-orange">4 to 6</td><td class="p-2 border-2 border-golem-text/30">Target takes 2 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-red">7 to 9</td><td class="p-2 border-2 border-golem-text/30">Target takes 3 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-purple">10 or Greater</td><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-purple">Target goes OoA</td></tr>
+                    </tbody>
+                </table>
+                <p>Targets further than BtB get cover (+1D to Ward) if the line of sight crosses terrain taller than 1 inch.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">5.4 Magick Attacks</h3>
+                <p>Opposed rolls: Attacker's Mind versus Defender's Mind. Cannot be made against terrain or animators.</p>
+                <table class="w-full my-6 border-4 border-golem-purple bg-golem-bg text-sm sm:text-base">
+                    <caption class="text-left font-bold text-golem-purple mb-2 uppercase tracking-widest">Magick Attack Table</caption>
+                    <thead class="bg-golem-purple text-golem-bg font-bold uppercase tracking-widest">
+                        <tr><th class="p-2 border-2 border-golem-purple">Difference</th><th class="p-2 border-2 border-golem-purple">Result</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-red">-4 or Less</td><td class="p-2 border-2 border-golem-text/30 text-golem-red font-bold">Attacker takes 1 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">-3 to 0</td><td class="p-2 border-2 border-golem-text/30">Miss</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-yellow">1 to 3</td><td class="p-2 border-2 border-golem-text/30">Target takes 1d2 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-orange">4 to 6</td><td class="p-2 border-2 border-golem-text/30">Target takes 1d3 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-red">7 to 9</td><td class="p-2 border-2 border-golem-text/30">Target takes 1d3+1 Damage</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold text-golem-purple">10 or Greater</td><td class="p-2 border-2 border-golem-text/30 font-bold">Target takes 2d6 Damage</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">5.5 Impairments & Status</h3>
+                <ul class="list-none space-y-3">
+                    <li class="bg-[#111] p-3 border-l-4 border-golem-yellow"><strong class="text-golem-yellow">Stunned:</strong> Cannot chain commands.</li>
+                    <li class="bg-[#111] p-3 border-l-4 border-golem-orange"><strong class="text-golem-orange">Rotting:</strong> Flip a coin at maintenance phase. Heads = 1 damage.</li>
+                    <li class="bg-[#111] p-3 border-l-4 border-golem-red"><strong class="text-golem-red">Gouged:</strong> -2 to Nimbleness.</li>
+                    <li class="bg-[#111] p-3 border-l-4 border-golem-purple"><strong class="text-golem-purple">Downed:</strong> Cannot receive commands; model placed down.</li>
+                    <li class="bg-[#111] p-3 border-l-4 border-golem-text"><strong class="text-golem-text">Out of Action (OoA):</strong> Removed from play area.</li>
+                </ul>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">5.6 Pushing and Collisions</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong class="text-golem-yellow">Into Animators/Followers:</strong> May dodge (Action Point, Unopposed Nimble DC12+ to move 3"). If failed/not taken, opposed Ward. If animator/follower fails: takes 1d3 dmg, pushed back that many inches. Success: 1 dmg, golem stops.</li>
+                    <li><strong class="text-golem-yellow">Into Golems:</strong> Opposed Ward roll. Colliding fails: stops, 1d2 dmg. Receiving fails: 1 dmg, pushed 1d6" along path.</li>
+                    <li><strong class="text-golem-yellow">Into Terrain:</strong> Unopposed Ward DC12+. Success: terrain takes 1d3 dmg. Fail: Golem takes 1 dmg.</li>
+                </ul>
+            </section>
+
+            <div class="text-golem-text/30 font-bold tracking-[1em] text-center my-12">/// /// ///</div>
+
+            <section id="playing" class="mb-16">
+                <h2 class="text-4xl font-serif font-bold zine-header">6. Playing the Game</h2>
+                
+                <p><strong>1. Start:</strong> Players perform The Ritual to cast souls into their golems. Deploy forces.</p>
+                <p><strong>2. Action Phase:</strong> Alternate activating animators using Action Points.</p>
+                <p><strong>3. Soul Phase:</strong> Alternate resolving soul effects for golems.</p>
+                <p><strong>4. End Phase:</strong> End of round effects occur.</p>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">6.6 Souls</h3>
+                <p>Before bouts, animators perform rituals by casting souls into their bodies, pulled from the ethereum. Souls are categorized into 6 domains.</p>
+                
+                <table class="w-full my-6 border-4 border-golem-text bg-[#0a0a0a] text-sm sm:text-base">
+                    <thead class="bg-golem-text text-golem-bg font-bold uppercase tracking-widest">
+                        <tr><th class="p-2 border-2 border-golem-text">D66 Roll</th><th class="p-2 border-2 border-golem-text">Result</th></tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aether -->
+                        <tr><td colspan="2" class="p-2 bg-golem-yellow text-golem-bg font-bold uppercase tracking-widest">Aether (Movement, Pushing, Collisions)</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">11 - 13</td><td class="p-2 border-2 border-golem-text/30">Golem may move up to 1d3 inches away.</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">14 - 16</td><td class="p-2 border-2 border-golem-text/30">Golem is pushed back 1d3 inches away in a random direction.</td></tr>
+                        <!-- Empyrean -->
+                        <tr><td colspan="2" class="p-2 bg-golem-red text-golem-bg font-bold uppercase tracking-widest">Empyrean (Restoration and Damage)</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">21 - 23</td><td class="p-2 border-2 border-golem-text/30">Restore 1d2 Durability.</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">24 - 26</td><td class="p-2 border-2 border-golem-text/30">Take 1d2 Damage.</td></tr>
+                        <!-- Ichor -->
+                        <tr><td colspan="2" class="p-2 bg-golem-purple text-golem-bg font-bold uppercase tracking-widest">Ichor (Defense and Toughness)</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">31 - 33</td><td class="p-2 border-2 border-golem-text/30">+1d2D to the next Ward Roll.</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">34 - 36</td><td class="p-2 border-2 border-golem-text/30">-1d2D to the next Ward Roll.</td></tr>
+                        <!-- Ozone -->
+                        <tr><td colspan="2" class="p-2 bg-golem-text text-golem-bg font-bold uppercase tracking-widest">Ozone (Magicks and Mysticism)</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">41 - 43</td><td class="p-2 border-2 border-golem-text/30">+1d2D to the next Mind Roll.</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">44 - 46</td><td class="p-2 border-2 border-golem-text/30">-1d2D to the next Ward Roll.</td></tr>
+                        <!-- Urania -->
+                        <tr><td colspan="2" class="p-2 bg-golem-orange text-golem-bg font-bold uppercase tracking-widest">Urania (Discovery and Terrain)</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">51 - 53</td><td class="p-2 border-2 border-golem-text/30">Place 1 piece of small terrain anywhere on board not within 3" of a model.</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">54 - 56</td><td class="p-2 border-2 border-golem-text/30">Opponent places 1 piece of small terrain anywhere on board not within 3" of a model.</td></tr>
+                        <!-- Ylem -->
+                        <tr><td colspan="2" class="p-2 bg-black text-golem-text border-2 border-golem-text font-bold uppercase tracking-widest">Ylem (Destruction of all things)</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">61 - 63</td><td class="p-2 border-2 border-golem-text/30">Gain a Ylem token.</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 font-bold">64 - 66</td><td class="p-2 border-2 border-golem-text/30">Gain 2 Ylem tokens.</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 class="text-2xl font-serif font-bold zine-subheader">6.7 The Ritual</h3>
+                <ol class="list-decimal pl-6 space-y-3">
+                    <li>Take 6d6 and drop (don't roll) them onto the table, at least 6" above the surface.</li>
+                    <li>You must stack any duplicates into towers. Choose one dice to be the base, then stack the others. Do not move the base dice.</li>
+                    <li>Take the remaining dice and drop them at least 6" above the surface (you can use this to knock over towers you don't want).</li>
+                    <li>Repeat stacking any new duplicates.</li>
+                    <li>Repeat steps 3 and 4 one more time.</li>
+                    <li>Count the numbers and mark them down for your golem.</li>
+                </ol>
+            </section>
+
+            <div class="text-golem-text/30 font-bold tracking-[1em] text-center my-12">/// /// ///</div>
+
+            <section id="bouts" class="mb-16">
+                <h2 class="text-4xl font-serif font-bold zine-header">7. Bouts</h2>
+                <p>Bouts in Golem28 are played on an 18"x18" square board. Roll 1d6 at the beginning of each bout to determine how many pieces of terrain to use. Players take turns placing terrain.</p>
+                
+                <table class="w-full my-6 border-4 border-golem-yellow bg-[#0a0a0a] text-sm">
+                    <thead class="bg-golem-yellow text-golem-bg font-bold uppercase tracking-widest text-xs sm:text-sm">
+                        <tr>
+                            <th class="p-2 border-2 border-golem-yellow">1d6</th>
+                            <th class="p-2 border-2 border-golem-yellow">Obstacles</th>
+                            <th class="p-2 border-2 border-golem-yellow">Small</th>
+                            <th class="p-2 border-2 border-golem-yellow">Medium</th>
+                            <th class="p-2 border-2 border-golem-yellow">Large</th>
+                            <th class="p-2 border-2 border-golem-yellow">Difficult</th>
+                            <th class="p-2 border-2 border-golem-yellow">Dangerous</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center font-bold">
+                        <tr><td class="p-2 border-2 border-golem-text/30 text-golem-yellow">1</td><td class="p-2 border-2 border-golem-text/30">4</td><td class="p-2 border-2 border-golem-text/30">3</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 text-golem-yellow">2</td><td class="p-2 border-2 border-golem-text/30">3</td><td class="p-2 border-2 border-golem-text/30">3</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td><td class="p-2 border-2 border-golem-text/30">1</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 text-golem-yellow">3</td><td class="p-2 border-2 border-golem-text/30">4</td><td class="p-2 border-2 border-golem-text/30">5</td><td class="p-2 border-2 border-golem-text/30">3</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 text-golem-yellow">4</td><td class="p-2 border-2 border-golem-text/30">6</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30">1</td><td class="p-2 border-2 border-golem-text/30">1</td><td class="p-2 border-2 border-golem-text/30">1</td><td class="p-2 border-2 border-golem-text/30">2</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 text-golem-yellow">5</td><td class="p-2 border-2 border-golem-text/30">3</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td><td class="p-2 border-2 border-golem-text/30">3</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td><td class="p-2 border-2 border-golem-text/30">6</td><td class="p-2 border-2 border-golem-text/30 text-golem-text/40">0</td></tr>
+                        <tr><td class="p-2 border-2 border-golem-text/30 text-golem-yellow">6</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30">2</td><td class="p-2 border-2 border-golem-text/30">2</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="space-y-8 mt-8">
+                    <!-- Grievous Greed -->
+                    <div class="border-2 border-golem-text p-6 bg-golem-bg">
+                        <h4 class="text-2xl font-serif font-bold text-golem-orange mb-2">7.1 Grievous Greed</h4>
+                        <p class="text-sm italic mb-4 text-golem-text/80">Setup: Do not place a piece of terrain in the middle of the board.</p>
+                        <p>Animators have 6 action points and followers have 3 action points. 3 treasure tokens are placed on the area: 1 in the middle, 1 via scatter dice (1d8 inches away), 1 mirrored on the opposite side.</p>
+                        <p>Animators/followers can interact to carry treasure (-1 Nimbleness). 4 Battle Rounds. Most units carrying treasure wins.</p>
+                        <ul class="list-none text-sm text-golem-yellow font-bold mt-4">
+                            <li>• +1D to the winner</li>
+                            <li>• +1D for each side that downed a golem</li>
+                            <li>• +2D for each side that downed an animator</li>
+                            <li>• +1D for each treasure taken off board edge</li>
+                        </ul>
+                    </div>
+
+                    <!-- King Among Kings -->
+                    <div class="border-2 border-golem-text p-6 bg-golem-bg">
+                        <h4 class="text-2xl font-serif font-bold text-golem-purple mb-2">7.2 King Among Kings</h4>
+                        <p class="text-sm italic mb-4 text-golem-text/80">Setup: Place 1 objective marker in the middle of the board.</p>
+                        <p>Animators have 6 action points and followers have 3 action points. 4 Battle Rounds. Most units within 3" of the objective wins.</p>
+                        <ul class="list-none text-sm text-golem-yellow font-bold mt-4">
+                            <li>• +1D to the winner</li>
+                            <li>• +1D for each side that downed a golem</li>
+                            <li>• +2D for each side that downed an animator</li>
+                        </ul>
+                    </div>
+
+                    <!-- From Whence They Came -->
+                    <div class="border-2 border-golem-text p-6 bg-golem-bg">
+                        <h4 class="text-2xl font-serif font-bold text-golem-red mb-2">7.3 From Whence They Came</h4>
+                        <p>Animators have 6 action points and followers have 3 action points. Destroy as many enemies as possible.</p>
+                        <p>4 Battle Rounds. Most units destroyed wins.</p>
+                        <ul class="list-none text-sm text-golem-yellow font-bold mt-4">
+                            <li>• +1D to the winner</li>
+                            <li>• +2D for each side that downed a golem</li>
+                            <li>• +3D for each side that downed an animator</li>
+                        </ul>
+                    </div>
+
+                    <!-- Assault and Defense -->
+                    <div class="border-2 border-golem-text p-6 bg-golem-bg">
+                        <h4 class="text-2xl font-serif font-bold text-golem-text mb-2">7.4 Assault and Defense</h4>
+                        <p class="text-sm italic mb-4 text-golem-text/80">Setup: Randomly decide attacker/defender. Large terrain in middle. Defender deploys around terrain (within 3"). Defender places all terrain. Attacker deploys any unit within any board edge.</p>
+                        <p>Animators have 6 action points and followers have 3 action points. Attacker tries to take control of objective; defender thwarts.</p>
+                        <p>4 Battle Rounds. Most units destroyed wins.</p>
+                        <ul class="list-none text-sm text-golem-yellow font-bold mt-4">
+                            <li>• +1D to the winner</li>
+                            <li>• +2D for each side that downed a golem</li>
+                            <li>• +3D for each side that downed an animator</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+            
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-10 mt-12 border-t-4 border-golem-text bg-golem-dark text-golem-text font-serif">
+        <p class="uppercase tracking-widest font-bold mb-2">Golem28 Core Rules</p>
+        <p class="text-sm opacity-80 italic">A Skirmish Kitbasher.</p>
+    </footer>
+
+</body>
+</html>
